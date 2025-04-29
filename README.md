@@ -1,3 +1,6 @@
+
+![Agro-Monitor Dashboard](public/image-01.png)
+
 # Agro-Monitor
 
 Agro-Monitor is a web application designed to assist farmers by providing accurate weather forecasts and crop yield predictions. By leveraging advanced machine learning models, Agro-Monitor helps optimize agricultural practices and improve productivity.
