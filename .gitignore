@@ -2,3 +2,11 @@
 /backend/venv
 /backend/__pycache__
 /backend/dataAnalysis/__pycache__
+
+# .DS_Store
+*.DS_Store
+
+# __pycache__ directories
+__pycache__
+# .env files
+*.env
