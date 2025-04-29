@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import { BASE_URL }  from '@/config.js';
 export default {
   name: 'SensorsView',
   data() {
@@ -104,8 +105,8 @@ export default {
     async fetchSensorData() {
       const url =
         this.dataSource === 'A'
-          ? `http://35.187.77.55:8000/sensorsG/${this.sensorNumber}`
-          : `http://35.187.77.55:8000/sensorsB/${this.sensorNumber}`;
+          ? `http://${BASE_URL}/sensorsG/${this.sensorNumber}`
+          : `http://${BASE_URL}/sensorsB/${this.sensorNumber}`;
       try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Error al obtener datos de los sensores');

@@ -59,8 +59,9 @@
 import { ref, onMounted, watch } from 'vue';
 import ControlPanel from '../components/ControlPanel.vue';
 import WeatherBar from '@/components/WeatherBar.vue';
+import { BASE_URL, OPENWEATHERMAP_APIKEY } from '@/config.js';
 
-const apiKey = 'd2736c1d75667857ddcc39a3dc4651c3'; // Asegúrate de reemplazar con tu API Key
+
 const datetime = new Date().toISOString();
 const cityInput = ref('');
 const selectedCity = ref('');
@@ -77,7 +78,7 @@ const fetchCities = async () => {
     return;
   }
 
-  const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityInput.value)}&limit=5&appid=${apiKey}`;
+  const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityInput.value)}&limit=5&appid=${OPENWEATHERMAP_APIKEY}`;
 
   try {
     const response = await fetch(geocodingUrl);
@@ -103,7 +104,7 @@ const fetchCoordinates = async () => {
     return;
   }
 
-  const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(selectedCity.value)}&limit=1&appid=${apiKey}`;
+  const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(selectedCity.value)}&limit=1&appid=${OPENWEATHERMAP_APIKEY}`;
 
   try {
     const response = await fetch(geocodingUrl);
@@ -127,7 +128,7 @@ const fetchCoordinates = async () => {
 // Función para obtener los datos de alerta
 const fetchAlertData = async () => {
   if (latitude.value !== null && longitude.value !== null) {
-    const alertUrl = `http://35.187.77.55:8000/alert/${latitude.value},${longitude.value}`;
+    const alertUrl = `http://${BASE_URL}/alert/${latitude.value},${longitude.value}`;
     try {
       const response = await fetch(alertUrl);
       if (!response.ok) throw new Error('Error en la respuesta de la API de alertas');

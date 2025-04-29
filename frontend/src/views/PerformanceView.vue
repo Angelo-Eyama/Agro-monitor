@@ -75,6 +75,7 @@
 
 <script>
 import { gsap } from 'gsap';
+import { BASE_URL } from '@/config.js';
 
 export default {
   data() {
@@ -139,8 +140,7 @@ export default {
       this.parametros.forEach(param => {
         datos[param.name] = param.value;
       });
-
-      const respuesta = await fetch("http://35.187.77.55:8000/predict/", {
+      const respuesta = await fetch(`http://${BASE_URL}/predict/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -227,6 +227,7 @@ h2 {
 
 .slider-group input[type="range"] {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 10px;
   border-radius: 5px;
