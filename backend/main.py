@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from pydantic.fields import Field
@@ -11,12 +12,14 @@ import time
 import httpx
 import meteoKeys as keys
 from cors import configure_cors
+from dotenv import load_dotenv, dotenv_values 
+load_dotenv() 
 
 # Cargar el modelo previamente entrenado
 modelo_cargado = joblib.load('modelo_xgboost_entrenado.pkl')
 
 #Constantes
-API_URL = "https://api.meteomatics.com"
+API_URL = os.getenv("METEOMATICS_BASE_URL")
 
 app = FastAPI()
 
